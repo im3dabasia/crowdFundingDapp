@@ -77,11 +77,6 @@ const createProject = async ({
     cost = ethers.utils.parseEther(cost)
     console.log("2", cost);
     tx = await contract.createProject(title, description, imageURL, cost, expiresAt)
-    // contract.events.LogMessage()
-    // .on('data', (event) => {
-    //   console.log(event.returnValues.message);
-    // })
-    // .on('error', console.error);
     console.log("3", tx);
 
     await tx.wait()
