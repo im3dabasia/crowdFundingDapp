@@ -9,14 +9,14 @@ import { getBackers, loadProject } from '../services/blockchain'
 import { useGlobalState } from '../store'
 
 const Project = () => {
-  const { id } = useParams()
+  const { id2 } = useParams()
   const [loaded, setLoaded] = useState(false)
   const [project] = useGlobalState('project')
   const [backers] = useGlobalState('backers')
 
   useEffect(async () => {
-    await loadProject(id)
-    await getBackers(id)
+    await loadProject(id2)
+    await getBackers(id2)
     setLoaded(true)
   }, [])
   return loaded ? (

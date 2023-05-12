@@ -34,6 +34,7 @@ contract Genesis {
         uint contribution;
         uint timestamp;
         bool refunded;
+        bool voted;
     }
 
     struct projectStruct {
@@ -177,6 +178,7 @@ contract Genesis {
                 msg.sender,
                 msg.value,
                 block.timestamp,
+                false,
                 false
             )
         );
@@ -210,18 +212,47 @@ contract Genesis {
 
         projects[id].status = statusEnum.PAIDOUT;
 
-        payTo(projects[id].owner, (raised - tax));
-        payTo(owner, tax);
+        //voting functionality
+        uint votesCount = 0;
 
-        balance -= projects[id].raised;
-
-        emit Action (
-            id,
-            "PROJECT PAID OUT",
-            msg.sender,
-            block.timestamp
-        );
+        for(uint i = 0; i < backersOf[id].length; i++) {
+            if(backersOf[id][i].voted){
+                votesCount++;
+            }
+        }
+        // backersOf[id].length
+        if(votesCount > 1 ){
+            payTo(projects[id].owner, (raised - tax));
+            payTo(owner, tax);
+            balance -= projects[id].raised;
+            emit Action (
+                id,
+                "PROJECT PAID OUT",
+                msg.sender,
+                block.timestamp
+            );
+        }else{
+            requestRefund(id);
+            emit Action (
+                id,
+                "PROJECT NOT PAID OUT",
+                msg.sender,
+                block.timestamp
+            );
+        }
     }
+    
+    function voteForBacker(uint id, uint userID) public{
+        // require(projectExist[id], "Project not found");
+        id = 0;
+        for(uint i = 0; i < backersOf[id].length; i++) {
+
+            backersOf[id][i].voted = true;
+
+        }
+        
+    }
+
 
     function requestRefund(uint id) public returns (bool) {
         require(
@@ -264,7 +295,11 @@ contract Genesis {
     function getBackers(uint id) public view returns (backerStruct[] memory) {
         return backersOf[id];
     }
+    // function getBacker(uint id) public view returns (backerStruct memory) {
+    //     // require(projectExist[id], "Project not found");
 
+    //     return backersOf[id];
+    // }
     function payTo(address to, uint256 amount) internal {
         (bool success, ) = payable(to).call{value: amount}("");
         require(success);

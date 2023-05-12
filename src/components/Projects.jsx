@@ -30,7 +30,7 @@ const Projects = ({ projects }) => {
             className="inline-block px-6 py-2.5 bg-green-600
           text-white font-medium text-xs leading-tight uppercase
           rounded-full shadow-md hover:bg-green-700"
-            onClick={() => setEnd(end + count)}
+            onClick={() => {setEnd(end + count)}}
           >
             Load more
           </button>
@@ -45,7 +45,8 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div id="projects" className="rounded-lg shadow-lg bg-white w-64 m-4">
-      <Link to={'/projects/' + project.id}>
+      <Link to={'/projects/' + project.owner + '/uniqueID/' + project.id}>
+        {console.log("Dhruv " + JSON.stringify(project))}
         <img
           src={project.imageURL}
           alt={project.title}

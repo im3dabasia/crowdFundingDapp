@@ -21,7 +21,7 @@ const App = () => {
       {loaded ? (
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects/:id" element={<Project />} />
+          <Route path="/projects/:id/uniqueID/:id2" element={<Project />} />
         </Routes>
       ) : null}
 

@@ -179,12 +179,28 @@ const backProject = async (id, amount) => {
   }
 }
 
+const voteProject = async (projectID, userID) => {
+  console.log("PPPP " + projectID + ' ' + userID)
+  try {
+    if (!ethereum) return alert('Please install Metamask')
+    const connectedAccount = getGlobalState('connectedAccount')
+    const contract = await getEtheriumContract()
+
+    tx = await contract.voteForBacker(projectID, userID, { gasLimit: 100000 })
+
+    await tx.wait()
+    console.log(tx)
+    await getBackers(projectID)
+  } catch (error) {
+    reportError(error)
+  }
+}
 const getBackers = async (id) => {
   try {
     if (!ethereum) return alert('Please install Metamask')
     const contract = await getEtheriumContract()
     let backers = await contract.getBackers(id)
-
+    // console.log("helo" + backers)
     setGlobalState('backers', structuredBackers(backers))
   } catch (error) {
     reportError(error)
@@ -267,4 +283,5 @@ export {
   backProject,
   getBackers,
   payoutProject,
+  voteProject
 }

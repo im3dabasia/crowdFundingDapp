@@ -41,12 +41,12 @@ const ProjectDetails = ({ project }) => {
               <div className="flex justify-start space-x-2">
                 <Identicons
                   className="rounded-full shadow-md"
-                  string={project?.owner}
+                  string={project?.owner }
                   size={15}
                 />
                 {project?.owner ? (
                   <small className="text-gray-700">
-                    {truncate(project?.owner, 4, 4, 11)}
+                    {truncate(project?.owner , 4, 4, 11)}
                   </small>
                 ) : null}
                 <small className="text-gray-500 font-bold">
