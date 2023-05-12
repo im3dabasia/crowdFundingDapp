@@ -7,10 +7,44 @@ import {
   useGlobalState,
 } from '../store'
 import { payoutProject } from '../services/blockchain'
+import { getVoteStatus, voteProject, getBackers } from '../services/blockchain'
+import { useState, useEffect } from 'react'
 
-const ProjectDetails = ({ project }) => {
+const ProjectDetails = ({ project, backers }) => {
   const [connectedAccount] = useGlobalState('connectedAccount')
   const expired = new Date().getTime() > Number(project?.expiresAt + '000')
+  const [votingStatus, setVotingStatus] = useState(false);
+  const [backers1, setBackers1] = useState([]);
+  const [voteTemp, setVoteTemp] = useState(false);
+
+  const getVS = async () => {
+    let tmp = await getVoteStatus(0, 0);
+    console.log("INit" + tmp);
+    setVoteTemp(tmp);
+  }
+  const getBackersInfo = async () => {
+    console.log("kkkk")
+    let tmp = await getBackers();
+    console.log("mm" + tmp)
+
+    console.log(tmp)
+    console.log('pathan')
+    setBackers1(tmp);
+  }
+  useEffect(() => {
+    getVS();
+    // getBackersInfo();
+  }, [voteTemp, backers])
+
+  useEffect(() => {
+
+    getVS();
+    console.log("donr")
+    // getBackersInfo()/
+    console.log("don4r")
+
+
+  }, [])
 
   return (
     <div className="pt-24 mb-5 px-6 flex justify-center">
@@ -41,12 +75,12 @@ const ProjectDetails = ({ project }) => {
               <div className="flex justify-start space-x-2">
                 <Identicons
                   className="rounded-full shadow-md"
-                  string={project?.owner }
+                  string={project?.owner}
                   size={15}
                 />
                 {project?.owner ? (
                   <small className="text-gray-700">
-                    {truncate(project?.owner , 4, 4, 11)}
+                    {truncate(project?.owner, 4, 4, 11)}
                   </small>
                 ) : null}
                 <small className="text-gray-500 font-bold">
@@ -141,6 +175,7 @@ const ProjectDetails = ({ project }) => {
                         >
                           Delete
                         </button>
+
                       </>
                     ) : (
                       <button
@@ -154,6 +189,25 @@ const ProjectDetails = ({ project }) => {
                     )
                   ) : null
                 ) : null}
+                {console.log("Jadoo " + backers)}
+                {backers && backers[0].length>0 &&
+                  <button
+                    type="button"
+                    className="inline-block px-6 py-2.5 bg-red-600
+                          text-white font-medium text-xs leading-tight uppercase
+                          rounded-full shadow-md hover:bg-red-700"
+                    onClick={async () => {
+                      setVoteTemp(!voteTemp)
+                      await voteProject(0, 0)
+
+                    }
+                    }
+                  >
+                    Voting Status
+                  </button>
+                }
+
+                <p>{voteTemp ? "Voted" : "Vote Pending "}</p>
               </div>
             </div>
           </div>

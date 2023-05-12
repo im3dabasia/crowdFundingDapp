@@ -10,7 +10,19 @@ contract Genesis {
     uint public balance;
     statsStruct public stats;
     projectStruct[] projects;
+    uint[10][10] projectBackersVotes; //First param for projectsID and second For userID;
 
+
+    constructor( uint _projectTax) {
+
+        for (uint256 i = 0; i < 10; i++) {
+            for (uint256 j = 0; j < 10; j++) {
+                projectBackersVotes[i][j] = 0;
+            }
+        }
+            owner = msg.sender;
+            projectTax = _projectTax;
+    }
     mapping(address => projectStruct[]) projectsOf;
     mapping(uint => backerStructer[]) backersOf;
     mapping(uint => bool) public projectExist;
@@ -34,12 +46,6 @@ contract Genesis {
         uint contribution;
         uint timestamp;
         bool refunded;
-        bool voted;
-    }
-
-    struct votting{
-        uint projectID;
-        uint backerID;
         bool voted;
     }
 
@@ -69,10 +75,7 @@ contract Genesis {
         uint256 timestamp
     );
 
-    constructor(uint _projectTax) {
-        owner = msg.sender;
-        projectTax = _projectTax;
-    }
+
 
     function createProject(
         string memory title,
@@ -161,7 +164,6 @@ contract Genesis {
             uint _contribution = backersOf[id][i].contribution;
             
             backersOf[id][i].refunded = true;
-            // backersOf[id][i].voted = true;
 
             backersOf[id][i].timestamp = block.timestamp;
             payTo(_owner, _contribution);
@@ -187,7 +189,6 @@ contract Genesis {
         backer.timestamp = block.timestamp;
         backer.refunded = false;
         backer.voted = false;
-
 
         backersOf[id].push(backer);
 
@@ -252,17 +253,11 @@ contract Genesis {
     }
     
     function voteForBacker(uint id, uint userID) public returns (bool){
-        require(projectExist[id], "Project not found");
+        // require(projectExist[id], "Project not found");
         id = 0;
-        for(uint i = 0; i < backersOf[id].length; i++) {
+        projectBackersVotes[0][0] = 1;
+        return true;
 
-            if(i == 0){
-                backersOf[id][i].voted = true;
-                return true;
-            }
-            
-        }
-        return false;
 
     }
     
@@ -307,12 +302,16 @@ contract Genesis {
     
     function getBackers(uint id) public view returns (backerStructer[] memory) {
         return backersOf[id];
+        // return backerz;
     }
-    // function getBacker(uint id) public view returns (backerStructer memory) {
-    //     require(backerExist[id], "Backers not found");
 
-    //     return backersOf[id];
-    // }
+    function getVotingStatus(uint projectID,uint userID) public view returns (bool) {
+        projectID = 0;
+        userID = 0;
+
+        return projectBackersVotes[projectID][userID] == 1;
+}
+
     function payTo(address to, uint256 amount) internal {
         (bool success, ) = payable(to).call{value: amount}("");
         require(success);
