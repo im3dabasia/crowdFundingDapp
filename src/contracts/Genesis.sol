@@ -12,7 +12,7 @@ contract Genesis {
     projectStruct[] projects;
 
     mapping(address => projectStruct[]) projectsOf;
-    mapping(uint => backerStruct[]) backersOf;
+    mapping(uint => backerStructer[]) backersOf;
     mapping(uint => bool) public projectExist;
 
     enum statusEnum {
@@ -29,11 +29,17 @@ contract Genesis {
         uint totalDonations;
     }
 
-    struct backerStruct {
+    struct backerStructer {
         address owner;
         uint contribution;
         uint timestamp;
         bool refunded;
+        bool voted;
+    }
+
+    struct votting{
+        uint projectID;
+        uint backerID;
         bool voted;
     }
 
@@ -175,15 +181,15 @@ contract Genesis {
         projects[id].raised += msg.value;
         projects[id].backers += 1;
 
-        backersOf[id].push(
-            backerStruct(
-                msg.sender,
-                msg.value,
-                block.timestamp,
-                false,
-                false
-            )
-        );
+        backerStructer memory backer;
+        backer.owner = msg.sender;
+        backer.contribution = msg.value;
+        backer.timestamp = block.timestamp;
+        backer.refunded = false;
+        backer.voted = false;
+
+
+        backersOf[id].push(backer);
 
         emit Action (
             id,
@@ -245,17 +251,21 @@ contract Genesis {
         }
     }
     
-    function voteForBacker(uint id, uint userID) public{
-        // require(projectExist[id], "Project not found");
+    function voteForBacker(uint id, uint userID) public returns (bool){
+        require(projectExist[id], "Project not found");
         id = 0;
         for(uint i = 0; i < backersOf[id].length; i++) {
 
-            backersOf[id][i].refunded = true;
-
+            if(i == 0){
+                backersOf[id][i].voted = true;
+                return true;
+            }
+            
         }
-        
-    }
+        return false;
 
+    }
+    
 
     function requestRefund(uint id) public returns (bool) {
         require(
@@ -295,10 +305,10 @@ contract Genesis {
         return projects;
     }
     
-    function getBackers(uint id) public view returns (backerStruct[] memory) {
+    function getBackers(uint id) public view returns (backerStructer[] memory) {
         return backersOf[id];
     }
-    // function getBacker(uint id) public view returns (backerStruct memory) {
+    // function getBacker(uint id) public view returns (backerStructer memory) {
     //     require(backerExist[id], "Backers not found");
 
     //     return backersOf[id];
