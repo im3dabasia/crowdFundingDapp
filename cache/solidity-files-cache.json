@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/im3dabasia/Desktop/genesis/src/contracts/Genesis.sol": {
-      "lastModificationDate": 1683869783542,
-      "contentHash": "dec9913b0ed6be2e3178a937dadb2d34",
+      "lastModificationDate": 1683879465039,
+      "contentHash": "5ad7cd19f38a8c32f29dd89ba0178bef",
       "sourceName": "src/contracts/Genesis.sol",
       "solcConfig": {
         "version": "0.8.11",

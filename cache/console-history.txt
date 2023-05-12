@@ -1,3 +1,12 @@
+console.log(tx3)
+const tx3 = await ethers.provider.getTransaction('0x56618d6fb4dbbddfb2167ccb6dd9979b10500f0aee3b329eabd13b57aca06ee0');
+console.log(tx2)
+const tx2 = await ethers.provider.getTransaction('0xd9c36165c46c75a9d71bff2a2f869282dde72e0aa9050f8784792b067d1d84f1');
+const tx1 = await ethers.provider.getTransaction('0xd9c36165c46c75a9d71bff2a2f869282dde72e0aa9050f8784792b067d1d84f1');
+const tx = await ethers.provider.getTransaction('0xd9c36165c46c75a9d71bff2a2f869282dde72e
+const tx = await ethers.provider.getTransaction('0xd9c36165c46c75a9d71bff2a2f869282dde72e0aa9050f8784792b067d1d84f1');
+const tx = await ethers.provider.getTransaction('<txHash>');
+eth.getBlock()
 const firstBlock1 = await ethers.provider.getBlock(1);
 const firstBlock = await ethers.provider.getBlock(1);
 const firstBlock = await ethers.provider.getBlock(0);

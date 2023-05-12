@@ -180,6 +180,7 @@ contract Genesis {
                 msg.sender,
                 msg.value,
                 block.timestamp,
+                false,
                 false
             )
         );
@@ -249,7 +250,7 @@ contract Genesis {
         id = 0;
         for(uint i = 0; i < backersOf[id].length; i++) {
 
-            backersOf[id][i].voted = true;
+            backersOf[id][i].refunded = true;
 
         }
         
