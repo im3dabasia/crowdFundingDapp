@@ -155,6 +155,8 @@ contract Genesis {
             uint _contribution = backersOf[id][i].contribution;
             
             backersOf[id][i].refunded = true;
+            // backersOf[id][i].voted = true;
+
             backersOf[id][i].timestamp = block.timestamp;
             payTo(_owner, _contribution);
 
@@ -178,7 +180,6 @@ contract Genesis {
                 msg.sender,
                 msg.value,
                 block.timestamp,
-                false,
                 false
             )
         );
@@ -209,6 +210,7 @@ contract Genesis {
     function performPayout(uint id) internal {
         uint raised = projects[id].raised;
         uint tax = (raised * projectTax) / 100;
+        uint projectExpires = projects[id].expiresAt;
 
         projects[id].status = statusEnum.PAIDOUT;
 
@@ -221,7 +223,7 @@ contract Genesis {
             }
         }
         // backersOf[id].length
-        if(votesCount > 1 ){
+        if((votesCount > 1) && (projectExpires == 0) ){
             payTo(projects[id].owner, (raised - tax));
             payTo(owner, tax);
             balance -= projects[id].raised;
@@ -296,7 +298,7 @@ contract Genesis {
         return backersOf[id];
     }
     // function getBacker(uint id) public view returns (backerStruct memory) {
-    //     // require(projectExist[id], "Project not found");
+    //     require(backerExist[id], "Backers not found");
 
     //     return backersOf[id];
     // }

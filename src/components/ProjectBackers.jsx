@@ -124,6 +124,7 @@ const Backer = ({ backer }) => {
       px-6 py-4 whitespace-nowrap"
       >
         {backer.refunded ? 'Yes' : 'No'}
+        {console.log(backer)}
       </td>
       <td
         className="text-sm font-light
