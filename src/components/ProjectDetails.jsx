@@ -32,15 +32,13 @@ const ProjectDetails = ({ project, backers }) => {
   }, [voteTemp, backers])
 
   useEffect(() => {
-
     getVS();
     getBackersInfo()
-
   }, [])
 
   return (
-    <div className="pt-24 mb-5 px-6 flex  justify-center">
-      <div className="flex justify-center  md:w-2/3">
+    <div className="pt-24 mb-5 px-6 flex flex-col items-center justify-center">
+      <div className="flex justify-center w-1/2 h-1/2">
         <div
           className="flex justify-start items-start
         sm:space-x-4 flex-wrap"
@@ -51,16 +49,22 @@ const ProjectDetails = ({ project, backers }) => {
             className="rounded-xl h-64 object-cover sm:w-1/3 w-full"
           />
 
-          <div className="flex-1 sm:py-0 py-4">
+
+        </div>
+        
+
+      </div>
+      <div className="flex justify-center  w-full h-1/2">
+         <div className="flex-1 sm:py-0 py-4">
             <div className="flex flex-col justify-start flex-wrap">
-              <h5 className="text-gray-900 text-xl font-medium mb-2">
+              <h5 className="text-gray-900 text-2xl text-center font-medium mb-2">
                 {project?.title}
               </h5>
-              <small className="text-gray-500">
+              <div className="text-gray-500 text-2xl text-center">
                 {expired
                   ? 'Expired'
                   : daysRemaining(project.expiresAt) + ' left'}
-              </small>
+              </div>
             </div>
 
             <div className="flex justify-between items-center w-full pt-1">
@@ -71,37 +75,37 @@ const ProjectDetails = ({ project, backers }) => {
                   size={15}
                 />
                 {project?.owner ? (
-                  <small className="text-gray-700">
+                  <div className="text-gray-700 text-2xl">
                     {truncate(project?.owner, 4, 4, 11)}
-                  </small>
+                  </div>
                 ) : null}
-                <small className="text-gray-500 font-bold">
+                <div className="text-gray-500 font-bold text-2xl">
                   {project?.backers} Backer{project?.backers == 1 ? '' : 's'}
-                </small>
+                </div>
               </div>
 
               <div className="font-bold">
                 {expired ? (
-                  <small className="text-red-500">Expired</small>
+                  <div className="text-red-500 text-2xl">Expired</div>
                 ) : project?.status == 0 ? (
-                  <small className="text-gray-500">Open</small>
+                  <div className="text-gray-500 text-2xl">Open</div>
                 ) : project?.status == 1 ? (
-                  <small className="text-blue-500">Accepted</small>
+                  <div className="text-blue-500 text-2xl">Accepted</div>
                 ) : project?.status == 2 ? (
-                  <small className="text-gray-500">Reverted</small>
+                  <div className="text-gray-500 text-2xl">Reverted</div>
                 ) : project?.status == 3 ? (
-                  <small className="text-red-500">Deleted</small>
+                  <div className="text-red-500 text-2xl">Deleted</div>
                 ) : (
-                  <small className="text-orange-500">Paid</small>
+                  <div className="text-orange-500">Paid</div>
                 )}
               </div>
             </div>
 
             <div>
-              <p className="text-sm font-light mt-2">{project?.description}</p>
+              <p className="text-2xl font-light mt-2">Description : {project?.description}</p>
               <div className="w-full overflow-hidden bg-gray-300 mt-4">
                 <div
-                  className="bg-blue-600 text-xs font-medium
+                  className="bg-blue-600 text-2xl font-medium
               text-blue-100 text-center p-0.5 leading-none
               rounded-l-full h-1 overflow-hidden max-w-full"
                   style={{
@@ -111,14 +115,14 @@ const ProjectDetails = ({ project, backers }) => {
               </div>
 
               <div className="flex justify-between items-center font-bold mt-2">
-                <small>{project?.raised} ETH Raised</small>
-                <small className="flex justify-start items-center">
+                <div className='text-2xl text-center'>{project?.raised} ETH Raised</div>
+                <div className="flex justify-start items-center">
                   <FaEthereum />
                   <span>{project?.cost} ETH</span>
-                </small>
+                </div>
               </div>
 
-              <div className="flex justify-start items-center space-x-2 mt-4">
+              <div className="flex justify-center items-center space-x-2 mt-4">
                 {project?.status == 0 ? (
                   <button
                     type="button"
@@ -181,7 +185,6 @@ const ProjectDetails = ({ project, backers }) => {
                     )
                   ) : null
                 ) : null}
-                {console.log("Jadoo " + backers)}
                 {backers && backers[0].length>0 &&
                   <button
                     type="button"
@@ -203,7 +206,6 @@ const ProjectDetails = ({ project, backers }) => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   )

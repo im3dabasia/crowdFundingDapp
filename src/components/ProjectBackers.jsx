@@ -13,7 +13,7 @@ import {
 const ProjectBackers = ({ backers }) => {
   return (
 
-    <div className="flex flex-col justify-center items-items md:w-2/3 px-6 mt-20">
+    <div className="flex flex-col justify-center w-full items-center  px-10  mt-28">
       <div
         className="
         shadow-md r ounded-md w-full mb-10"

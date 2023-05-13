@@ -25,7 +25,6 @@ const Project = () => {
         <ProjectDetails project={project} />
       </div>
       <div className='w-1/2'>
-        {/* <ProjectDetails project={project} /> */}
         <ProjectBackers backers={backers} />
         
       </div>
