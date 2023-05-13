@@ -29,7 +29,7 @@ const BackProject = ({ project }) => {
       >
         <form onSubmit={handleSubmit} className="flex flex-col">
           <div className="flex justify-between items-center">
-            <p className="font-semibold">{project?.title}</p>
+            <p className="font-semibold">{" "}</p>
             <button
               onClick={() => setGlobalState('backModal', 'scale-0')}
               type="button"
@@ -39,7 +39,7 @@ const BackProject = ({ project }) => {
             </button>
           </div>
 
-          <div className="flex justify-center items-center mt-5">
+          <div className="flex flex-col justify-center items-center mt-5">
             <div className="rounded-xl overflow-hidden h-20 w-20">
               <img
                 src={
@@ -50,16 +50,21 @@ const BackProject = ({ project }) => {
                 className="h-full w-full object-cover cursor-pointer"
               />
             </div>
+            <div
+              className="mt-4 uppercase"
+            >
+              Project Title : {project?.title}
+            </div>
           </div>
 
           <div
             className="flex justify-between items-center
-          bg-gray-300 rounded-xl mt-5"
+          bg-gray-300 rounded-xl mt-5 "
           >
             <input
-              className="block w-full bg-transparent
+              className="block bg-transparent
             border-0 text-sm text-slate-500 focus:outline-none
-            focus:ring-0"
+            focus:ring-0 w-full"
               type="number"
               step={0.01}
               min={0.01}
@@ -70,15 +75,17 @@ const BackProject = ({ project }) => {
               required
             />
           </div>
+          <div className=' flex flex-col items-center justify-center mt-8'>
 
-          <button
-            type="submit"
-            className="inline-block px-6 py-2.5 bg-green-600
+            <button
+              type="submit"
+              className="inline-block px-6 py-2.5 bg-blue-600
             text-white font-medium text-md leading-tight
-            rounded-full shadow-md hover:bg-green-700 mt-5"
-          >
-            Back Project
-          </button>
+            rounded-full shadow-md hover:bg-blue-700 mt-5"
+            >
+              Contribute to Project
+            </button>
+          </div>
         </form>
       </div>
     </div>
