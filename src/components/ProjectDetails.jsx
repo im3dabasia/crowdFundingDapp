@@ -19,29 +19,22 @@ const ProjectDetails = ({ project, backers }) => {
 
   const getVS = async () => {
     let tmp = await getVoteStatus(0, 0);
-    console.log("INit" + tmp);
     setVoteTemp(tmp);
   }
   const getBackersInfo = async () => {
-    console.log("kkkk")
     let tmp = await getBackers();
-    console.log("mm" + tmp)
 
-    console.log(tmp)
-    console.log('pathan')
     setBackers1(tmp);
   }
   useEffect(() => {
     getVS();
-    // getBackersInfo();
+    getBackersInfo();
   }, [voteTemp, backers])
 
   useEffect(() => {
 
     getVS();
-    console.log("donr")
-    // getBackersInfo()/
-    console.log("don4r")
+    getBackersInfo()
 
 
   }, [])
