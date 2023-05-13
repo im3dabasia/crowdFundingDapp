@@ -94,7 +94,7 @@ const ProjectDetails = ({ project, backers }) => {
                 ) : project?.status == 0 ? (
                   <small className="text-gray-500">Open</small>
                 ) : project?.status == 1 ? (
-                  <small className="text-green-500">Accepted</small>
+                  <small className="text-blue-500">Accepted</small>
                 ) : project?.status == 2 ? (
                   <small className="text-gray-500">Reverted</small>
                 ) : project?.status == 3 ? (
@@ -109,8 +109,8 @@ const ProjectDetails = ({ project, backers }) => {
               <p className="text-sm font-light mt-2">{project?.description}</p>
               <div className="w-full overflow-hidden bg-gray-300 mt-4">
                 <div
-                  className="bg-green-600 text-xs font-medium
-              text-green-100 text-center p-0.5 leading-none
+                  className="bg-blue-600 text-xs font-medium
+              text-blue-100 text-center p-0.5 leading-none
               rounded-l-full h-1 overflow-hidden max-w-full"
                   style={{
                     width: `${(project?.raised / project?.cost) * 100}%`,
@@ -130,9 +130,9 @@ const ProjectDetails = ({ project, backers }) => {
                 {project?.status == 0 ? (
                   <button
                     type="button"
-                    className="inline-block px-6 py-2.5 bg-green-600
+                    className="inline-block px-6 py-2.5 bg-blue-600
               text-white font-medium text-xs leading-tight uppercase
-              rounded-full shadow-md hover:bg-green-700"
+              rounded-full shadow-md hover:bg-blue-700"
                     onClick={() => setGlobalState('backModal', 'scale-100')}
                   >
                     Back Project

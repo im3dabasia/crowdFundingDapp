@@ -147,9 +147,9 @@ const Backer = ({ backer }) => {
         {!backer.voted &&
           <button
             type="button"
-            className="flex justify-center items-center w-9 h-9 bg-green-600
+            className="flex justify-center items-center w-9 h-9 bg-blue-600
               text-white font-medium text-xs leading-tight uppercase
-              rounded-full shadow-md hover:bg-green-700"
+              rounded-full shadow-md hover:bg-blue-700"
             onClick={ async(e) => {
               e.preventDefault()
               console.log(backer.owner + " " + projectID )
