@@ -20,7 +20,7 @@ const BackProject = ({ project }) => {
   return (
     <div
       className={`fixed top-0 left-0 w-screen h-screen flex
-    items-center justify-center bg-black bg-opacity-50
+    items-center justify-center bg-black bg-opacity-80
     transform transition-transform duration-300 ${backModal}`}
     >
       <div
