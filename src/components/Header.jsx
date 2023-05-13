@@ -1,4 +1,4 @@
-import { TbBusinessplan } from 'react-icons/tb'
+import { GrMoney } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { connectWallet } from '../services/blockchain'
 import { truncate, useGlobalState } from '../store'
@@ -14,28 +14,30 @@ const Header = () => {
       <Link
         to="/"
         className="flex justify-start items-center
-      text-xl text-black space-x-1"
+      text-xl space-x-1 inline-block px-6 py-2.5 bg-blue-600
+      text-white font-medium  leading-tight uppercase
+      rounded-full shadow-md hover:bg-blue-700"
       >
-        <span>Genesis</span>
-        <TbBusinessplan />
+        <span >AUFunds</span>
+        <GrMoney />
       </Link>
 
       <div className="flex space-x-2 justify-center">
         {connectedAccount ? (
           <button
             type="button"
-            className="inline-block px-6 py-2.5 bg-green-600
-            text-white font-medium text-xs leading-tight uppercase
-            rounded-full shadow-md hover:bg-green-700"
+            className="inline-block px-6 py-2.5 bg-blue-600
+            text-white font-medium text-xl leading-tight uppercase
+            rounded-full shadow-md hover:bg-blue-700"
           >
-            {truncate(connectedAccount, 4, 4, 11)}
+            {truncate(connectedAccount, 5, 5, 13)}
           </button>
         ) : (
           <button
             type="button"
-            className="inline-block px-6 py-2.5 bg-green-600
+            className="inline-block px-6 py-2.5 bg-blue-600
             text-white font-medium text-xs leading-tight uppercase
-            rounded-full shadow-md hover:bg-green-700"
+            rounded-full shadow-md hover:bg-blue-700"
             onClick={connectWallet}
           >
             Connect Wallet

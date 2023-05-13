@@ -33,7 +33,7 @@ const ProjectDetails = ({ project, backers }) => {
   }
   useEffect(() => {
     getVS();
-    // getBackersInfo();
+    getBackersInfo();
   }, [voteTemp, backers])
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const ProjectDetails = ({ project, backers }) => {
     console.log("donr")
     // getBackersInfo()/
     console.log("don4r")
+    console.log(backers)
 
 
   }, [])
