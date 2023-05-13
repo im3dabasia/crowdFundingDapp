@@ -253,12 +253,13 @@ contract Genesis {
     }
     
     function voteForBacker(uint id, uint userID) public returns (bool){
-        // require(projectExist[id], "Project not found");
         id = 0;
-        projectBackersVotes[0][0] = 1;
+        for(uint i = 0; i < backersOf[id].length; i++) {
+            
+            backersOf[id][i].voted = true;
+
+        }
         return true;
-
-
     }
     
 
