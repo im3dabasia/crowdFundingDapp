@@ -3,8 +3,8 @@ const Hero = () => {
   const [stats] = useGlobalState('stats')
 
   return (
-    <div className="flex flex-row text-center bg-white text-gray-800 py-24 px-6">
-      <div className='flex flex-col'>
+    <div className="flex flex-col  w-full text-center w-100 bg-white text-gray-800 py-24 px-6">
+      <div className='flex flex-col w-full'>
         <h1
           className="text-5xl md:text-6xl xl:text-7xl font-bold
       tracking-tight mb-12"
@@ -13,46 +13,26 @@ const Hero = () => {
           <br />
           <span className="uppercase text-blue-600">AuFunds.</span>
         </h1>
-        <div className="flex justify-center items-center space-x-2">
-          <button
-            type="button"
-            className="inline-block px-6 py-2.5 bg-blue-600
-        text-white font-medium text-xs leading-tight uppercase
-        rounded-full shadow-md hover:bg-blue-700"
-            onClick={() => setGlobalState('createModal', 'scale-100')}
-          >
-            Add Project
-          </button>
 
-          <button
-            type="button"
-            className="inline-block px-6 py-2.5 border border-blue-600
-        font-medium text-xs leading-tight uppercase text-blue-600
-        rounded-full shadow-md bg-transparent hover:bg-blue-700
-        hover:text-white"
-          >
-            Back Projects
-          </button>
-        </div>
       </div>
 
-      <div className='w-1/2 flex justify-center items-center'>
-        <div className="flex flex-col w-1/2 justify-center items-center mt-10">
+      <div className='w-full flex flex-col justify-center items-center'>
+        <div className="flex flex-col w-1/2 justify-center items-center mt-10 mb-10">
           <div
             className="flex flex-row justify-center items-center
-          h-20 border shadow-md w-full"
+          h-20 border shadow-md w-4/6"
           >
             <span
               className="text-2xl font-bold text-blue-900
             leading-5"
             >
-              {stats?.totalProjects  || 0}
+              {stats?.totalProjects || 0}
             </span>
             <span className='text-2xl'>&nbsp; Projects</span>
           </div>
           <div
             className="flex flex-row justify-center items-center
-          h-20 border shadow-md w-full"
+          h-20 border shadow-md w-4/6"
           >
             <span
               className="text-2xl font-bold text-blue-900
@@ -64,7 +44,7 @@ const Hero = () => {
           </div>
           <div
             className="flex flex-row justify-center items-center
-          h-20 border shadow-md w-full"
+          h-20 border shadow-md w-4/6"
           >
             <span
               className="text-2xl font-bold text-blue-900
@@ -75,14 +55,29 @@ const Hero = () => {
             <span className="text-2xl"> &nbsp;Donated</span>
           </div>
         </div>
+        <div className="flex flex-row justify-center items-center space-x-2 ">
+          <button
+            type="button"
+            className="inline-block px-6 py-2.5 bg-blue-600
+        text-white font-medium text-2xl leading-tight uppercase
+        rounded-full shadow-md hover:bg-blue-700 "
+            onClick={() => setGlobalState('createModal', 'scale-100')}
+          >
+            Add Project
+          </button>
+
+          <button
+            type="button"
+            className="inline-block px-6 py-2.5 border border-blue-600
+        font-medium text-2xl  leading-tight uppercase text-blue-600
+        rounded-full shadow-md bg-transparent hover:bg-blue-700
+        hover:text-white"
+          >
+            Back Projects
+          </button>
+        </div>
 
       </div>
-
-
-
-
-
-
     </div>
   )
 }

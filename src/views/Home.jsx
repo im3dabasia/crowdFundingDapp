@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import AddButton from '../components/AddButton'
 import CreateProject from '../components/CreateProject'
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
@@ -13,12 +12,20 @@ const Home = () => {
     await loadProjects()
   }, [])
   return (
-    <>
-      <Hero />
-      <Projects projects={projects} />
+    <div className='flex flex-row'>
+      <div className='flex flex-row w-1/2'>
+        <div className='w-full'>
+          <Hero />
+        </div>
+      </div>
+
+      <div className='w-1/2'>
+        <Projects projects={projects} />
+      </div>
       <CreateProject />
-      <AddButton />
-    </>
+
+    </div>
+
   )
 }
 

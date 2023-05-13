@@ -16,7 +16,7 @@ const Projects = ({ projects }) => {
   }, [projects, end])
 
   return (
-    <div className="flex flex-col px-6 mb-7">
+    <div className="flex flex-col px-6 mt-16 mb-7">
       <div className="flex justify-center items-center flex-wrap">
         {collection.map((project, i) => (
           <ProjectCard key={i} project={project} />
@@ -27,9 +27,9 @@ const Projects = ({ projects }) => {
         <div className="flex justify-center items-center my-5">
           <button
             type="button"
-            className="inline-block px-6 py-2.5 bg-green-600
+            className="inline-block px-6 py-2.5 bg-blue-600
           text-white font-medium text-xs leading-tight uppercase
-          rounded-full shadow-md hover:bg-green-700"
+          rounded-full shadow-md hover:bg-blue-700"
             onClick={() => {setEnd(end + count)}}
           >
             Load more
@@ -44,7 +44,7 @@ const ProjectCard = ({ project }) => {
   const expired = new Date().getTime() > Number(project?.expiresAt + '000')
 
   return (
-    <div id="projects" className="rounded-lg shadow-lg bg-white w-64 m-4">
+    <div id="projects" className="rounded-lg shadow-lg bg-white w-80 m-8">
       <Link to={'/projects/' + project.owner + '/uniqueID/' + project.id}>
         {console.log("Dhruv " + JSON.stringify(project))}
         <img
@@ -54,29 +54,29 @@ const ProjectCard = ({ project }) => {
         />
 
         <div className="p-4">
-          <h5>{truncate(project.title, 25, 0, 28)}</h5>
+          <h5 className='text-2xl text-center'>{truncate(project.title, 25, 0, 28)}</h5>
 
           <div className="flex flex-col">
             <div className="flex justify-start space-x-2 items-center mb-3">
               <Identicons
-                className="rounded-full shadow-md"
+                className="rounded-full shadow-md "
                 string={project.owner}
                 size={15}
               />  
-              <small className="text-gray-700">
-                {truncate(project.owner, 4, 4, 11)}
-              </small>
+              <div className="text-gray-700 text-2xl text-center">
+                {truncate(project.owner, 8, 8, 22)}
+              </div>
             </div>
 
-            <small className="text-gray-500">
+            <div className="text-gray-500 text-2xl text-center">
               {expired ? 'Expired' : daysRemaining(project.expiresAt) + ' left'}
-            </small>
+            </div>
           </div>
 
           <div className="w-full bg-gray-300 overflow-hidden">
             <div
-              className="bg-green-600 text-xs font-medium
-            text-green-100 text-center p-0.5 leading-none
+              className="bg-blue-600 text-xs font-medium
+            text-blue-100 text-center p-0.5 leading-none
             rounded-l-full"
               style={{ width: `${(project.raised / project.cost) * 100}%` }}
             ></div>
@@ -86,33 +86,33 @@ const ProjectCard = ({ project }) => {
             className="flex justify-between items-center 
         font-bold mt-1 mb-2 text-gray-700"
           >
-            <small>{project.raised} ETH Raised</small>
-            <small className="flex justify-start items-center">
+            <div className='text-2xl text-center'>{project.raised} ETH Raised</div>
+            <div className="flex justify-start items-center">
               <FaEthereum />
-              <span>{project.cost} ETH</span>
-            </small>
+              <span className='text-2xl text-center'>{project.cost} ETH</span>
+            </div>
           </div>
 
           <div
             className="flex justify-between items-center flex-wrap
             mt-4 mb-2 text-gray-500 font-bold"
           >
-            <small>
+            <div className='text-2xl text-center'>
               {project.backers} Backer{project.backers == 1 ? '' : 's'}
-            </small>
-            <div>
+            </div>
+            <div className='text-2xl text-center'>
               {expired ? (
-                <small className="text-red-500">Expired</small>
+                <div className="text-red-500">Expired</div>
               ) : project?.status == 0 ? (
-                <small className="text-gray-500">Open</small>
+                <div className="text-gray-500">Open</div>
               ) : project?.status == 1 ? (
-                <small className="text-green-500">Accepted</small>
+                <div className="text-blue-500">Accepted</div>
               ) : project?.status == 2 ? (
-                <small className="text-gray-500">Reverted</small>
+                <div className="text-gray-500">Reverted</div>
               ) : project?.status == 3 ? (
-                <small className="text-red-500">Deleted</small>
+                <div className="text-red-500">Deleted</div>
               ) : (
-                <small className="text-orange-500">Paid</small>
+                <div className="text-orange-500">Paid</div>
               )}
             </div>
           </div>
