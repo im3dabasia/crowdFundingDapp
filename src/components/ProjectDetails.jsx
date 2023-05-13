@@ -36,7 +36,6 @@ const ProjectDetails = ({ project, backers }) => {
     getVS();
     getBackersInfo()
 
-
   }, [])
 
   return (
