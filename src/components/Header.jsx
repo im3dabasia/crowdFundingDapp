@@ -14,7 +14,7 @@ const Header = () => {
       <Link
         to="/"
         className="flex justify-start items-center
-      text-xl space-x-1 inline-block px-6 py-2.5 bg-blue-600
+      text-xl space-x-1 px-6 py-2.5 bg-blue-600
       text-white font-medium  leading-tight uppercase
       rounded-full shadow-md hover:bg-blue-700"
       >
@@ -40,7 +40,7 @@ const Header = () => {
             rounded-full shadow-md hover:bg-blue-700"
             onClick={connectWallet}
           >
-            Connect Wallet
+            Connect to  Wallet
           </button>
         )}
       </div>
