@@ -1,9 +1,8 @@
     #An Awesome Web3 Crowd-Funding Platform with React, Solidity, and CometChat
 
-    <center><figcaption>Genesis Project</figcaption></center>
+    <center><figcaption>AUFunds Project</figcaption></center>
 
-    ![Genesis Project](./screenshots/1.gif)
-    <center><figcaption>Back Project</figcaption></center>
+    <center><figcaption>Contribute to Project</figcaption></center>
 
     ## Technology
 
@@ -53,4 +52,3 @@
     - 👀 [EthersJs](https://docs.ethers.io/v5/)
     - 🎅 [Faucet](https://faucets.chain.link/rinkeby)
     - 🤖 [CometChat](https://cometchat.com/)
-    - ✨ [Live Demo](https://genesis-45443.web.app/)
