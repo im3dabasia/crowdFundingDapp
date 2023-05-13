@@ -20,13 +20,20 @@ const Project = () => {
     setLoaded(true)
   }, [])
   return loaded ? (
-    <>
-      <ProjectDetails project={project} />
+    <div className='flex flex-row '>
+      <div className='w-1/2'>
+        <ProjectDetails project={project} />
+      </div>
+      <div className='w-1/2'>
+        {/* <ProjectDetails project={project} /> */}
+        <ProjectBackers backers={backers} />
+        
+      </div>
+
       <UpdateProject project={project} />
       <DeleteProject project={project} />
       <ContributeProject project={project} />
-      <ProjectBackers backers={backers} />
-    </>
+    </div>
   ) : null
 }
 

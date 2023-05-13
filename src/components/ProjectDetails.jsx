@@ -47,8 +47,8 @@ const ProjectDetails = ({ project, backers }) => {
   }, [])
 
   return (
-    <div className="pt-24 mb-5 px-6 flex justify-center">
-      <div className="flex justify-center flex-col md:w-2/3">
+    <div className="pt-24 mb-5 px-6 flex  justify-center">
+      <div className="flex justify-center  md:w-2/3">
         <div
           className="flex justify-start items-start
         sm:space-x-4 flex-wrap"
@@ -135,7 +135,7 @@ const ProjectDetails = ({ project, backers }) => {
               rounded-full shadow-md hover:bg-blue-700"
                     onClick={() => setGlobalState('backModal', 'scale-100')}
                   >
-                    Back Project
+                    Contribute 
                   </button>
                 ) : null}
 

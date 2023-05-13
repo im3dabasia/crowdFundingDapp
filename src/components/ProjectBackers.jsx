@@ -13,12 +13,11 @@ import {
 const ProjectBackers = ({ backers }) => {
   return (
 
-    <div className="flex flex-col justify-center items-start md:w-2/3 px-6 mx-auto">
+    <div className="flex flex-col justify-center items-items md:w-2/3 px-6 mt-20">
       <div
-        className="max-h-[calc(100vh_-_25rem)] overflow-y-auto
-        shadow-md rounded-md w-full mb-10"
+        className="
+        shadow-md r ounded-md w-full mb-10"
       >
-        {console.log("hello world" + JSON.stringify(backers))}
 
         <table className="min-w-full">
           <thead className="border-b">
