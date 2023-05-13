@@ -10,11 +10,7 @@ import {
   useParams
 } from "react-router-dom";
 
-
-
 const ProjectBackers = ({ backers }) => {
-
-
   return (
 
     <div className="flex flex-col justify-center items-start md:w-2/3 px-6 mx-auto">

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { backProject } from '../services/blockchain'
 import { useGlobalState, setGlobalState } from '../store'
 
-const BackProject = ({ project }) => {
+const ContributeProject = ({ project }) => {
   const [backModal] = useGlobalState('backModal')
   const [amount, setAmount] = useState('')
 
@@ -92,4 +92,4 @@ const BackProject = ({ project }) => {
   )
 }
 
-export default BackProject
+export default ContributeProject

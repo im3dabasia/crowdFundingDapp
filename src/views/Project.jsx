@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BackProject from '../components/BackProject'
+import ContributeProject from '../components/ContributeProject'
 import DeleteProject from '../components/DeleteProject'
 import ProjectBackers from '../components/ProjectBackers'
 import ProjectDetails from '../components/ProjectDetails'
@@ -24,7 +24,7 @@ const Project = () => {
       <ProjectDetails project={project} />
       <UpdateProject project={project} />
       <DeleteProject project={project} />
-      <BackProject project={project} />
+      <ContributeProject project={project} />
       <ProjectBackers backers={backers} />
     </>
   ) : null
